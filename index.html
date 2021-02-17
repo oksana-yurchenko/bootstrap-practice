@@ -78,27 +78,27 @@
 		    <div class="section-about border-bottom border-success">
 				<div class="container pt-4 pb-4">
 					<h2 class="text-center mb-3" id="portfolio">Portfolio</h2>
-					<div class="row d-flex justify-content-between mb-4">
+					<div class="row d-flex justify-content-between mb-4 links">
 						<div class="portfolio-item col-md-4">
 							<div class="card">
-							  <a href="#" data-toggle="modal" data-target="#adaptive" data-toggle="modal"><img src="img/portfolio/adaptive.png" class="card-img-top" alt="Portfolio item"></a>
+							  <a href="https://oksana-yurchenko.github.io/adaptive/" class="openpop"><img src="img/portfolio/adaptive.png" class="card-img-top openpop" alt="Portfolio item"></a>
 							</div>
 						</div>
 						<div class="portfolio-item col-md-4">
 							<div class="card">
-							  <a href="https://oksana-yurchenko.github.io/easy-sketch/"><img src="img/portfolio/easy_sketch.png" class="img-fluid" alt="Portfolio item"></a>
+							  <a href="https://oksana-yurchenko.github.io/easy-sketch/" class="openpop"><img src="img/portfolio/easy_sketch.png" class="img-fluid" alt="Portfolio item"></a>
 							</div>
 						</div>
 						<div class="portfolio-item  col-md-4">
 							<div class="card">
-							  <a href="https://oksana-yurchenko.github.io/Bislite/"><img src="img/portfolio/bislite.png" class="card-img-top" alt="Portfolio item"></a>
+							  <a href="https://oksana-yurchenko.github.io/Bislite/" class="openpop"><img src="img/portfolio/bislite.png" class="card-img-top" alt="Portfolio item"></a>
 							</div>
 						</div>
 					</div>
 					<div class="row d-flex justify-content-between mb-4">
 						<div class="portfolio-item  col-md-4">
 							<div class="card">
-							  <a href="http://www.creative-seo.ru/blog/gulp-dlya-nachinayushchih/"><img src="img/portfolio/gulp.png" class="card-img-top" alt="Portfolio item"></a>
+							  <a href="http://www.creative-seo.ru/blog/gulp-dlya-nachinayushchih/" class="openpop"><img src="img/portfolio/gulp.png" class="card-img-top" alt="Portfolio item"></a>
 							</div>
 						</div>
 					</div>
@@ -106,18 +106,15 @@
 		    </div>
 		<!-- Modal windows-->
 
-		<div class="modal fade" id="adaptive" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-							<div class="modal-dialog modal-lg" role="document">
-							    <div class="modal-content" style="background: #fff;">
-					            </div>
-					            <div class="modal-body">
-					                <iframe src="https://oksana-yurchenko.github.io/adaptive/" width="800" height="600" style="background: #fff; display:block;"></iframe>
-					            </div>
-					            <div class="modal-footer">
-					            	<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					            </div>
-							</div>
-						</div>
+		<div class="wrapper" id="wrap">
+	    	<div class="popup">
+	        	<iframe src="" id="frame">
+	            	<p>Your browser does not support iframes.</p>
+	        	</iframe>
+			<a href="#" class="close" id="close-btn">X</a>
+	    	</div>
+		</div>
+
 		<!-- Blog -->
 		
 			<div class="section-blog border-bottom border-success">
@@ -183,14 +180,24 @@
 		</footer>
 
 	    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 		<script>
-			$(window).load(function(){
-    			$('#adaptive').modal('show');
-			});	
-		</script>
+			$(document).ready(function () {
+		    $(".popup").hide();
+		    $(".openpop").click(function (e) {
+			        e.preventDefault();
+			        $("iframe").attr("src", $(this).attr('href'));
+			        $(".links").fadeOut('slow');
+			        $(".popup").fadeIn('slow');
+			    });
 
+			    $(".close").click(function () {
+			        $(this).parent().fadeOut("slow");
+			        $(".links").fadeIn("slow");
+	    		});
+			});
+		</script>
 	</body>
 </html>
